@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.7.34031.279
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EFCheckFind", "EFCheckFind\EFCheckFind.csproj", "{070C83A7-94EC-43C7-989B-4EDABE0A4493}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{070C83A7-94EC-43C7-989B-4EDABE0A4493}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{070C83A7-94EC-43C7-989B-4EDABE0A4493}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{070C83A7-94EC-43C7-989B-4EDABE0A4493}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{070C83A7-94EC-43C7-989B-4EDABE0A4493}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {53DE46FB-C4ED-4150-9D67-012EB0A2E8B8}
+	EndGlobalSection
+EndGlobal
