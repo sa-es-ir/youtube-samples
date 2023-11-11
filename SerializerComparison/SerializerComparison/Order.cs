@@ -1,16 +1,31 @@
-﻿namespace SerializerComparison;
+﻿using MessagePack;
+using ProtoBuf;
 
+namespace SerializerComparison;
+
+[ProtoContract]
+[MessagePackObject]
 public class Order
 {
-    public Guid Id { get; set; } = Guid.NewGuid();
+    [ProtoMember(1)] // protobuf
+    [Key(0)] // messagePack
+    public string Id { get; set; } = Guid.NewGuid().ToString();
 
+    [ProtoMember(2)]
+    [Key(1)]
     public string Name { get; set; }
 
+    [ProtoMember(3)]
+    [Key(2)]
     public string Category { get; set; }
 
-    public int TotalAmount { get; set; }
+    [ProtoMember(4)]
+    [Key(3)]
+    public long TotalAmount { get; set; }
 
-    public List<Item> Items { get; set; }
+    [ProtoMember(5)]
+    [Key(4)]
+    public string User { get; set; }
 
     public Order Create()
     {
@@ -18,30 +33,8 @@ public class Order
         {
             Name = "Book Order",
             Category = "Books",
-
             TotalAmount = 100,
-            Items = new List<Item>()
-            {
-                new()
-                {
-                    Name = "Item 1",
-                    Amount = 50
-                },
-                new()
-                {
-                    Name = "Item 2",
-                    Amount = 50
-                }
-            }
+            User = Guid.NewGuid().ToString()
         };
     }
-}
-
-public class Item
-{
-    public Guid Id { get; set; } = Guid.NewGuid();
-
-    public string Name { get; set; }
-
-    public int Amount { get; set; }
 }
