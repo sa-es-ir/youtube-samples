@@ -21,6 +21,15 @@ I made a comparison between these libraries:
 ```
 
 ## Output size
-
+```bash
+| Library      | Output size|
+|------------ |-----------:|
+| NewtonSoft  |   148 B    |
+| System.Text |   148 B    |
+| Protobuf    |   97  B    |
+| Apache.Avro |   93  B    |
+| MessagePack |   95  B    |
+| Bson        |   160 B    |
+```
 
 [Check the YouTube video](https://youtu.be/qWacutAW3e8)
