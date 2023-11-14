@@ -12,9 +12,9 @@ using System.Text.Json;
 
 var order = new Order().Create();
 
-BenchmarkRunner.Run<SerializerBenchmark>();
-
-return;
+// to run the benchmarck uncomment these lines and run project on release mode
+//BenchmarkRunner.Run<SerializerBenchmark>();
+//return;
 
 Console.WriteLine("=========== Serializer Comparison ===========");
 
