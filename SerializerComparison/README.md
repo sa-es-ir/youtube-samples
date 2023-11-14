@@ -32,4 +32,5 @@ I made a comparison between these libraries:
 | Bson        |   160 B    |
 ```
 
-[Check the YouTube video](https://youtu.be/qWacutAW3e8)
+## You can watch the video here: 👇
+[![Watch the video](https://img.youtube.com/vi/qWacutAW3e8/hqdefault.jpg)](https://youtu.be/qWacutAW3e8)
