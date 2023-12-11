@@ -23,6 +23,5 @@ public static class ServiceCollectionExtension
                  ClockSkew = TimeSpan.Zero,
              };
          });
-        //.AddScheme<JwtBearerOptions, CustomAuthenticationHandler>("CustomHandler", options => { });
     }
 }
