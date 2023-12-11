@@ -1,7 +1,5 @@
 ﻿using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
-using System.IdentityModel.Tokens.Jwt;
-using System.Security.Claims;
 
 namespace OpenIdConnectAuthentication;
 
@@ -15,9 +13,16 @@ public static class ServiceCollectionExtension
             options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
             options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
         })
-            .AddJwtBearer(options =>
+        .AddJwtBearer(options =>
+         {
+             options.MetadataAddress = configuration.GetValue<string>("IdentityOIDC")!;
+
+             options.TokenValidationParameters = new TokenValidationParameters
              {
-                 options.Authority = configuration.GetValue<string>("IdentityOIDC");
-             });
+                 ValidateAudience = false,
+                 ClockSkew = TimeSpan.Zero,
+             };
+         });
+        //.AddScheme<JwtBearerOptions, CustomAuthenticationHandler>("CustomHandler", options => { });
     }
 }
