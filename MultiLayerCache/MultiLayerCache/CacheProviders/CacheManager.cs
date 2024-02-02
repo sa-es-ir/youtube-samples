@@ -1,6 +1,6 @@
 ﻿namespace MultiLayerCache.CacheProviders;
 
-public class CacheManager(ICacheProvider[] cacheProviders, ILogger<CacheManager> logger)
+public class CacheManager(IEnumerable<ICacheProvider> cacheProviders, ILogger<CacheManager> logger)
 {
     public async Task<T> GetOrAddAsync<T>(string key, Func<Task<T>> getFromDbFunction, TimeSpan expiry)
     {
@@ -24,11 +24,12 @@ public class CacheManager(ICacheProvider[] cacheProviders, ILogger<CacheManager>
 
         var result = await getFromDbFunction();
 
-        for (int i = 0; i < cacheProviders.Length; i++)
+        var providerList = cacheProviders.ToList();
+        for (int i = 0; i < providerList.Count; i++)
         {
             var expirySeconds = (i * 2 == 0 ? 1 : i * 2) * expiry.TotalSeconds;
 
-            await cacheProviders[i].SaveAsync(key, result, TimeSpan.FromSeconds(expirySeconds));
+            await providerList[i].SaveAsync(key, result, TimeSpan.FromSeconds(expirySeconds));
         }
 
         return result;

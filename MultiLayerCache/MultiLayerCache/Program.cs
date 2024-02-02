@@ -11,7 +11,7 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddScoped<WeatherService>();
 
 // Register Cache providers
-builder.Services.AddScoped<ICacheProvider, InMemoryCacheProvider>();
+builder.Services.AddCacheServices(builder.Configuration);
 
 var app = builder.Build();
 

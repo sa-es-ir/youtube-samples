@@ -3,18 +3,18 @@ using System.Text.Json;
 
 namespace MultiLayerCache.CacheProviders;
 
-public class RedisCacheProvider(IDatabase redis, ILogger<RedisCacheProvider> logger) : ICacheProvider
+public class RedisCacheProvider(IDatabase Redis, ILogger<RedisCacheProvider> logger) : ICacheProvider
 {
     public Task SaveAsync<T>(string key, T value, TimeSpan expiry)
     {
-        return redis.StringSetAsync(key, JsonSerializer.Serialize(value), expiry);
+        return Redis.StringSetAsync(key, JsonSerializer.Serialize(value), expiry);
     }
 
     public async Task<T?> GetAsync<T>(string key)
     {
         logger.LogInformation("Try to get value from redis cache: {key}", key);
 
-        var data = await redis.StringGetAsync(key);
+        var data = await Redis.StringGetAsync(key);
 
         if (data.IsNullOrEmpty)
         {
@@ -29,6 +29,6 @@ public class RedisCacheProvider(IDatabase redis, ILogger<RedisCacheProvider> log
 
     public Task<bool> DeleteAsync(string key)
     {
-        return redis.KeyDeleteAsync(key);
+        return Redis.KeyDeleteAsync(key);
     }
 }
