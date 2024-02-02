@@ -39,7 +39,7 @@ public class InMemoryCacheProvider : ICacheProvider
         return result;
     }
 
-    public Task<bool> DeleteAsync(string key, CancellationToken cancellationToken)
+    public Task<bool> DeleteAsync(string key)
     {
         try
         {
@@ -53,7 +53,7 @@ public class InMemoryCacheProvider : ICacheProvider
         }
     }
 
-    public Task SaveAsync<T>(string key, T value, TimeSpan expiry, CancellationToken cancellationToken)
+    public Task SaveAsync<T>(string key, T value, TimeSpan expiry)
     {
         var options = new MemoryCacheEntryOptions
         {
@@ -61,6 +61,8 @@ public class InMemoryCacheProvider : ICacheProvider
         };
 
         _memCache.Set(key, value, options);
+
+        _logger.LogInformation("Data saved to in-memory cache, key: {key} expiry:{expiry}", key, expiry.TotalSeconds);
 
         return Task.CompletedTask;
     }

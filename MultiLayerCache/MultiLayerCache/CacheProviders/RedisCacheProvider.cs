@@ -1,24 +1,34 @@
-﻿namespace MultiLayerCache.CacheProviders;
+﻿using StackExchange.Redis;
+using System.Text.Json;
 
-public class RedisCacheProvider : ICacheProvider
+namespace MultiLayerCache.CacheProviders;
+
+public class RedisCacheProvider(IDatabase redis, ILogger<RedisCacheProvider> logger) : ICacheProvider
 {
-    public Task<T> GetOrAddAsync<T>(string key, Func<Task<T>> getFromDbFunction, TimeSpan expiry, CancellationToken cancellationToken)
+    public Task SaveAsync<T>(string key, T value, TimeSpan expiry)
     {
-        throw new NotImplementedException();
+        return redis.StringSetAsync(key, JsonSerializer.Serialize(value), expiry);
     }
 
-    public Task<bool> DeleteAsync(string key, CancellationToken cancellationToken)
+    public async Task<T?> GetAsync<T>(string key)
     {
-        throw new NotImplementedException();
+        logger.LogInformation("Try to get value from redis cache: {key}", key);
+
+        var data = await redis.StringGetAsync(key);
+
+        if (data.IsNullOrEmpty)
+        {
+            logger.LogInformation("Cache not found in redis: {key}", key);
+            return default;
+        }
+
+        logger.LogInformation("=====> HIT redis cache: {key}", key);
+
+        return JsonSerializer.Deserialize<T>(data!);
     }
 
-    public Task SaveAsync<T>(string key, T value, TimeSpan expiry, CancellationToken cancellationToken)
+    public Task<bool> DeleteAsync(string key)
     {
-        throw new NotImplementedException();
-    }
-
-    public Task<T?> GetAsync<T>(string key)
-    {
-        throw new NotImplementedException();
+        return redis.KeyDeleteAsync(key);
     }
 }
