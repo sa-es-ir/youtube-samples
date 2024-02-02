@@ -1,4 +1,5 @@
 using MutliLayerCache;
+using MutliLayerCache.CacheProviders;
 using MutliLayerCache.Services;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -9,6 +10,8 @@ builder.Services.AddSwaggerGen();
 // Register services
 builder.Services.AddScoped<WeatherService>();
 
+// Register Cache providers
+builder.Services.AddScoped<ICacheProvider, InMemoryCacheProvider>();
 
 var app = builder.Build();
 
