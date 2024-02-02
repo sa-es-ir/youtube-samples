@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using MutliLayerCache.Services;
+using MultiLayerCache.Services;
 
-namespace MutliLayerCache;
+namespace MultiLayerCache;
 
 public static class ApiExtension
 {

@@ -1,6 +1,6 @@
 ﻿
 using Microsoft.Extensions.Caching.Memory;
-namespace MutliLayerCache.CacheProviders;
+namespace MultiLayerCache.CacheProviders;
 
 public class InMemoryCacheProvider : ICacheProvider
 {

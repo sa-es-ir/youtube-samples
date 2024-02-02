@@ -1,4 +1,4 @@
-﻿namespace MutliLayerCache.Services;
+﻿namespace MultiLayerCache.Services;
 
 public class WeatherService
 {

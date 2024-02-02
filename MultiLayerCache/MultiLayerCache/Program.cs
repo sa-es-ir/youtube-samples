@@ -1,6 +1,6 @@
-using MutliLayerCache;
-using MutliLayerCache.CacheProviders;
-using MutliLayerCache.Services;
+using MultiLayerCache;
+using MultiLayerCache.CacheProviders;
+using MultiLayerCache.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 

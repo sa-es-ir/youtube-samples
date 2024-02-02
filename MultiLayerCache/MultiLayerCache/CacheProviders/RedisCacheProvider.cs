@@ -1,5 +1,4 @@
-﻿
-namespace MutliLayerCache.CacheProviders;
+﻿namespace MultiLayerCache.CacheProviders;
 
 public class RedisCacheProvider : ICacheProvider
 {

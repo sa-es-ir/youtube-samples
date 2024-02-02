@@ -1,4 +1,4 @@
-﻿namespace MutliLayerCache.CacheProviders;
+﻿namespace MultiLayerCache.CacheProviders;
 
 public interface ICacheProvider
 {

@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.8.34316.72
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MutliLayerCache", "MutliLayerCache\MutliLayerCache.csproj", "{EE4D42D8-C0D2-44DD-9660-D3CF8BAB147C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MultiLayerCache", "MultiLayerCache\MultiLayerCache.csproj", "{EE4D42D8-C0D2-44DD-9660-D3CF8BAB147C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
