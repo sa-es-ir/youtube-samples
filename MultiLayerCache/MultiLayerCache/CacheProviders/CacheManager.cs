@@ -4,23 +4,21 @@ public class CacheManager(IEnumerable<ICacheProvider> cacheProviders, ILogger<Ca
 {
     public async Task<T> GetOrAddAsync<T>(string key, Func<Task<T>> getFromDbFunction, TimeSpan expiry)
     {
-        logger.LogInformation("Try to get value from cache: {key}", key);
-
         foreach (var cacheProvider in cacheProviders)
         {
+            logger.LogInformation("Try to get value from cache: {key} in {cacheProvider}", key, cacheProvider.GetType().Name);
             var cachedValue = await cacheProvider.GetAsync<T>(key);
 
             if (cachedValue != null)
             {
-                logger.LogInformation("=====> HIT cache for {key} in {cacheProvider}", key, cacheProvider.GetType().Name);
-
+                logger.LogInformation("*****> HIT for {key} in {cacheProvider}", key, cacheProvider.GetType().Name);
                 return cachedValue;
             }
             else
-                logger.LogInformation("Cache wasn't hit for {key} in {cacheProvider}", key, cacheProvider.GetType().Name);
+                logger.LogInformation("----->Cache wasn't hit for {key} in {cacheProvider}", key, cacheProvider.GetType().Name);
         }
 
-        logger.LogInformation("Not found in cache: {key}", key);
+        logger.LogInformation("====> Not found in any cache: {key}", key);
 
         var result = await getFromDbFunction();
 
