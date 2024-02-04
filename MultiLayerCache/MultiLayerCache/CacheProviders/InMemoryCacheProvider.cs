@@ -4,20 +4,6 @@ namespace MultiLayerCache.CacheProviders;
 
 public class InMemoryCacheProvider(IMemoryCache memCache, ILogger<InMemoryCacheProvider> logger) : ICacheProvider
 {
-    public Task<bool> DeleteAsync(string key)
-    {
-        try
-        {
-            memCache.Remove(key);
-            return Task.FromResult(true);
-        }
-        catch (Exception ex)
-        {
-            logger.LogError(ex, "Error on delete cache key: {key}", key);
-            return Task.FromResult(false);
-        }
-    }
-
     public Task SaveAsync<T>(string key, T value, TimeSpan expiry)
     {
         var options = new MemoryCacheEntryOptions
@@ -34,9 +20,15 @@ public class InMemoryCacheProvider(IMemoryCache memCache, ILogger<InMemoryCacheP
 
     public Task<T?> GetAsync<T>(string key)
     {
-        if (memCache.TryGetValue(key, out T? cacheResult))
-            logger.LogInformation("=====> HIT in-memory cache: {key}", key);
+
+        memCache.TryGetValue(key, out T? cacheResult);
 
         return Task.FromResult(cacheResult);
+    }
+
+    public Task<bool> DeleteAsync(string key)
+    {
+        memCache.Remove(key);
+        return Task.FromResult(true);
     }
 }
