@@ -8,7 +8,7 @@ public class RedisCacheProvider(IDatabase Redis, ILogger<RedisCacheProvider> log
     public async Task SaveAsync<T>(string key, T value, TimeSpan expiry)
     {
         await Redis.StringSetAsync(key, JsonSerializer.Serialize(value), expiry);
-        logger.LogInformation("Data saved to in-memory cache, key: {key} expiry:{expiry}", key, expiry.TotalSeconds);
+        logger.LogInformation("Data saved to redis cache, key: {key} expiry:{expiry}", key, expiry.TotalSeconds);
     }
 
     public async Task<T?> GetAsync<T>(string key)

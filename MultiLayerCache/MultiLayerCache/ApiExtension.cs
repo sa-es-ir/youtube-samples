@@ -11,12 +11,11 @@ public static class ApiExtension
         app.MapGet("/weatherforecast", async ([FromServices] WeatherService service,
             [FromServices] CacheManager cacheManager) =>
         {
-            WeatherForecast[] forecast = await cacheManager
-            .GetOrAddAsync("w-c-f",
-            () => service.GetForecastsAsync(),
-            TimeSpan.FromSeconds(10));
+            var result = await cacheManager.GetOrAddAsync("forecast-key",
+                () => service.GetForecastsAsync(),
+                TimeSpan.FromSeconds(5));
 
-            return forecast;
+            return result;
         })
         .WithName("GetWeatherForecast")
         .WithOpenApi();

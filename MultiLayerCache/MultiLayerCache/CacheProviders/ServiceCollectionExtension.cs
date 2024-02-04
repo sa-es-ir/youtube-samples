@@ -7,6 +7,7 @@ public static class ServiceCollectionExtension
     public static void AddCacheServices(this IServiceCollection services, IConfiguration configuration)
     {
         services.AddMemoryCache();
+
         services.AddScoped<ICacheProvider, InMemoryCacheProvider>();
         services.AddScoped<ICacheProvider, RedisCacheProvider>();
 

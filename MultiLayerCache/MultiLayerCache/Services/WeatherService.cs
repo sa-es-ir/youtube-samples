@@ -1,6 +1,6 @@
 ﻿namespace MultiLayerCache.Services;
 
-public class WeatherService
+public class WeatherService(ILogger<WeatherService> logger)
 {
     public async Task<WeatherForecast[]> GetForecastsAsync()
     {
@@ -9,6 +9,7 @@ public class WeatherService
 
     private Task<WeatherForecast[]> GetDBForecastsAsync()
     {
+        logger.LogInformation("Fetching from Database...");
         var summaries = new[]
         {
             "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
