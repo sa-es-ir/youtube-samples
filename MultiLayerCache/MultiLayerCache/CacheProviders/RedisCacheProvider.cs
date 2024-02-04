@@ -5,24 +5,20 @@ namespace MultiLayerCache.CacheProviders;
 
 public class RedisCacheProvider(IDatabase Redis, ILogger<RedisCacheProvider> logger) : ICacheProvider
 {
-    public Task SaveAsync<T>(string key, T value, TimeSpan expiry)
+    public async Task SaveAsync<T>(string key, T value, TimeSpan expiry)
     {
-        return Redis.StringSetAsync(key, JsonSerializer.Serialize(value), expiry);
+        await Redis.StringSetAsync(key, JsonSerializer.Serialize(value), expiry);
+        logger.LogInformation("Data saved to in-memory cache, key: {key} expiry:{expiry}", key, expiry.TotalSeconds);
     }
 
     public async Task<T?> GetAsync<T>(string key)
     {
-        logger.LogInformation("Try to get value from redis cache: {key}", key);
-
         var data = await Redis.StringGetAsync(key);
 
         if (data.IsNullOrEmpty)
         {
-            logger.LogInformation("Cache not found in redis: {key}", key);
             return default;
         }
-
-        logger.LogInformation("=====> HIT redis cache: {key}", key);
 
         return JsonSerializer.Deserialize<T>(data!);
     }
