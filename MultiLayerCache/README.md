@@ -2,7 +2,7 @@
 
 Speaking of caching, you may already have an in-memory or Distributed cache (like Redis) in your application but both approaches have some issues.
 
-In-memory cache can't be used when you have distributed systems and multiple instances of your API, since it's memory specific.
+In-memory cache can't be used when you have distributed systems and multiple instances of your API, since it's memory-specific.
 Distributed cache has the issue of I/O operation and network latency.
 
 Can we merge both approaches? Yes for sure!
