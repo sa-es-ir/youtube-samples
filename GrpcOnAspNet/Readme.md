@@ -8,6 +8,5 @@ It is the best choice for back-to-back communication. Still, you can't use gRPC 
 
 In this video, I show you how to gRPC in microservice-like architecture using API -> gRPC.SDK -> gRPC.Server.
 
-Hope you like it.
-
-Video: https://youtu.be/SgCAPjyotLM
+## You can watch the video here: 👇
+[![Watch the video](https://img.youtube.com/vi/SgCAPjyotLM/hqdefault.jpg)](https://youtu.be/SgCAPjyotLM)
