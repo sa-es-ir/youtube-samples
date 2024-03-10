@@ -15,7 +15,6 @@ public class TenantIdentifierMiddleware
     {
         tenantProvider.TenantId = context.Request.Query["tenantId"];
 
-        // Call the next delegate/middleware in the pipeline.
         await next(context);
     }
 }

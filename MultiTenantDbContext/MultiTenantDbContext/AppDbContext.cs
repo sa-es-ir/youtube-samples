@@ -21,6 +21,18 @@ public class AppDbContext : DbContext
                 .HasQueryFilter(x => x.TenantId == _tenantId);
     }
 
+    public Task<List<Student>> GetStudentsAsync(CancellationToken cancellationToken)
+    {
+        return Students.ToListAsync(cancellationToken);
+    }
+
+    public Task<List<Student>> GetAllStudentsAsync(CancellationToken cancellationToken)
+    {
+        return Students
+            .IgnoreQueryFilters()
+            .ToListAsync(cancellationToken);
+    }
+
     public DbSet<Student> Students { get; set; }
 }
 
