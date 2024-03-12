@@ -12,6 +12,7 @@ builder.Services.AddDbContext<AppDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("Default"));
 
     options.LogTo(Console.WriteLine, LogLevel.Information);
+    options.EnableSensitiveDataLogging();
 });
 
 builder.Services.AddScoped<TenantProvider>();
@@ -30,31 +31,13 @@ app.UseHttpsRedirection();
 
 app.UseMiddleware<TenantIdentifierMiddleware>();
 
-var summaries = new[]
-{
-    "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
-};
-
-app.MapGet("/weatherforecast", async ([FromServices] AppDbContext context, CancellationToken cancellationToken) =>
+app.MapGet("/students", async ([FromServices] AppDbContext context, CancellationToken cancellationToken) =>
 {
     var students = await context.GetStudentsAsync(cancellationToken);
 
-    var forecast = Enumerable.Range(1, 5).Select(index =>
-        new WeatherForecast
-        (
-            DateOnly.FromDateTime(DateTime.Now.AddDays(index)),
-            Random.Shared.Next(-20, 55),
-            summaries[Random.Shared.Next(summaries.Length)]
-        ))
-        .ToArray();
-    return forecast;
+    return students;
 })
-.WithName("GetWeatherForecast")
+.WithName("Students")
 .WithOpenApi();
 
 app.Run();
-
-internal record WeatherForecast(DateOnly Date, int TemperatureC, string? Summary)
-{
-    public int TemperatureF => 32 + (int)(TemperatureC / 0.5556);
-}

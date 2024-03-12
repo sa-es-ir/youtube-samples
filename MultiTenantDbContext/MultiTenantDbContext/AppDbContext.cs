@@ -17,7 +17,8 @@ public class AppDbContext : DbContext
         base.OnModelCreating(modelBuilder);
 
         if (_tenantId is not null)
-            modelBuilder.Entity<Student>()
+            modelBuilder
+                .Entity<Student>()
                 .HasQueryFilter(x => x.TenantId == _tenantId);
     }
 
