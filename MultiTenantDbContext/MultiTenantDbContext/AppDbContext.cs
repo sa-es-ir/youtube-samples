@@ -16,10 +16,9 @@ public class AppDbContext : DbContext
     {
         base.OnModelCreating(modelBuilder);
 
-        if (_tenantId is not null)
-            modelBuilder
-                .Entity<Student>()
-                .HasQueryFilter(x => x.TenantId == _tenantId);
+        modelBuilder
+            .Entity<Student>()
+            .HasQueryFilter(x => x.TenantId == _tenantId);
     }
 
     public Task<List<Student>> GetStudentsAsync(CancellationToken cancellationToken)

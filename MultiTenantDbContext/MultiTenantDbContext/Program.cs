@@ -17,7 +17,6 @@ builder.Services.AddDbContext<AppDbContext>(options =>
 
 builder.Services.AddScoped<TenantProvider>();
 
-
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -31,9 +30,14 @@ app.UseHttpsRedirection();
 
 app.UseMiddleware<TenantIdentifierMiddleware>();
 
-app.MapGet("/students", async ([FromServices] AppDbContext context, CancellationToken cancellationToken) =>
+app.MapGet("/students", async ([FromServices] AppDbContext context, [FromServices] TenantProvider tenantProvider, CancellationToken cancellationToken) =>
 {
-    var students = await context.GetStudentsAsync(cancellationToken);
+    List<Student> students;
+
+    if (tenantProvider.TenantId is null)
+        students = await context.GetAllStudentsAsync(cancellationToken);
+    else
+        students = await context.GetStudentsAsync(cancellationToken);
 
     return students;
 })
