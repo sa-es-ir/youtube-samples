@@ -1,16 +1,12 @@
+using CustomMediatR;
 using CustomMediatR.Commands;
-using MediatR;
 using Microsoft.AspNetCore.Mvc;
-
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-builder.Services.AddMediatR(x =>
-{
-    x.RegisterServicesFromAssembly(typeof(Program).Assembly);
-});
+builder.Services.AddMyMediator();
 
 var app = builder.Build();
 
@@ -24,14 +20,16 @@ if (app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 
 
-app.MapGet("/user-command", async ([FromServices] IMediator meditor, CancellationToken cancellationToken) =>
+app.MapGet("/user-command", async ([FromServices] IMyMediator meditor, CancellationToken cancellationToken) =>
 {
     var response = await meditor.Send(new UserCommand("Mediator"), cancellationToken);
+
+    response = await meditor.Send(new UserUpdateCommand("UpdatedMediator"), cancellationToken);
 
     return response;
 })
 .WithName("UserCommand")
 .WithOpenApi();
 
-app.Run();
 
+app.Run();
