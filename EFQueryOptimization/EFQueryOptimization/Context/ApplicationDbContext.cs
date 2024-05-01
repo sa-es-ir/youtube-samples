@@ -13,12 +13,6 @@ public class ApplicationDbContext : DbContext
     {
 
     }
-    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-    {
-        optionsBuilder
-            .UseSqlServer("Server=127.0.0.1;Database=EFOptimize;Uid=sa;Password=123456;TrustServerCertificate=True",
-            opt => opt.CommandTimeout((int)TimeSpan.FromMinutes(10).TotalSeconds));
-    }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {

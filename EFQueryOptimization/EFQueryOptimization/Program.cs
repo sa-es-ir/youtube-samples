@@ -5,14 +5,14 @@ using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
 {
     options.UseSqlServer(builder.Configuration.GetConnectionString("MSSQL"));
+    options.EnableSensitiveDataLogging();
+    options.LogTo(Console.WriteLine, LogLevel.Information);
 });
 
 builder.Services.AddScoped<EmployeeRepository>();
@@ -33,7 +33,7 @@ app.MapGet("/employees", ([FromServices] EmployeeRepository repository) =>
     return repository.GetEmployees();
 })
 .WithDescription(@"select (name, username, companyName) of top 2 employees 
-                    who belong to Backend or Cloud department 
+                    who belongs to Backend or Cloud department 
                     and have at least one Bonus payroll 
                     and part of the company founded in year 2022.")
 .WithOpenApi();
