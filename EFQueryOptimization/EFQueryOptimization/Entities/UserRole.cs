@@ -1,4 +1,4 @@
-﻿namespace DatabaseNight.Entities;
+﻿namespace EFQueryOptimization.Entities;
 
 public class UserRole
 {

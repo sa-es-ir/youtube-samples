@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace DatabaseNight.Entities;
+﻿namespace EFQueryOptimization.Entities;
 
 public class Company
 {

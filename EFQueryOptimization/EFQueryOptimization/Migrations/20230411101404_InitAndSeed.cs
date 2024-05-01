@@ -2,7 +2,7 @@
 
 #nullable disable
 
-namespace DatabaseNight.Migrations
+namespace EFQueryOptimization.Migrations
 {
     /// <inheritdoc />
     public partial class InitAndSeed : Migration

@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace DatabaseNight.Entities;
+namespace EFQueryOptimization.Entities;
 
 public class Employee
 {

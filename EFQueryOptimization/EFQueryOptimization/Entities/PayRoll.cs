@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace DatabaseNight.Entities;
+﻿namespace EFQueryOptimization.Entities;
 
 public class PayRoll
 {
@@ -13,6 +11,4 @@ public class PayRoll
     public string Type { get; set; }
 
     public int EmployeeId { get; set; }
-
-    public Employee Employee { get; set; }
 }

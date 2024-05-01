@@ -2,18 +2,15 @@
 using BenchmarkDotNet.Columns;
 using BenchmarkDotNet.Configs;
 using BenchmarkDotNet.Reports;
-using DatabaseNight.Context;
+using EFQueryOptimization.Context;
 using Microsoft.EntityFrameworkCore;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
-namespace DatabaseNight;
+namespace EFQueryOptimization;
 
 [Config(typeof(Config))]
 [HideColumns(Column.RatioSD, Column.AllocRatio)]
 [MemoryDiagnoser(false)]
-public class EFTuningService
+public class EFPerfBenchmark
 {
     private class Config : ManualConfig
     {
@@ -32,7 +29,7 @@ public class EFTuningService
     [Benchmark(Baseline = true)]
     public List<EmployeeDto> GetEmployees()
     {
-        var context = new ApplicationContext();
+        var context = new ApplicationDbContext();
 
         var allowedDepartments = context
             .Departments.Where(x => x.Name == "Backend" || x.Name == "Cloud")

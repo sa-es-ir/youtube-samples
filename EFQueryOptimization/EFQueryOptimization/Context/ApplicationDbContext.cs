@@ -1,11 +1,18 @@
-﻿using DatabaseNight.Entities;
+﻿using EFQueryOptimization.Entities;
 using Microsoft.EntityFrameworkCore;
-using System;
 
-namespace DatabaseNight.Context;
+namespace EFQueryOptimization.Context;
 
-public class ApplicationContext : DbContext
+public class ApplicationDbContext : DbContext
 {
+    public ApplicationDbContext()
+    {
+
+    }
+    public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options)
+    {
+
+    }
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
         optionsBuilder

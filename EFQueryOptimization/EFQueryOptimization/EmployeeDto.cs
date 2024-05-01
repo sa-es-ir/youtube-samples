@@ -1,8 +1,6 @@
-﻿using DatabaseNight.Entities;
-using System;
-using System.Collections.Generic;
+﻿using EFQueryOptimization.Entities;
 
-namespace DatabaseNight;
+namespace EFQueryOptimization;
 
 public class EmployeeDto
 {
