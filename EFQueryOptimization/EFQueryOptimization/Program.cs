@@ -1,7 +1,13 @@
+using BenchmarkDotNet.Running;
+using EFQueryOptimization;
 using EFQueryOptimization.Context;
 using EFQueryOptimization.Data;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+
+BenchmarkRunner.Run<EFPerfBenchmark>();
+
+return;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -12,7 +18,6 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
 {
     options.UseSqlServer(builder.Configuration.GetConnectionString("MSSQL"));
     options.EnableSensitiveDataLogging();
-    options.LogTo(Console.WriteLine, LogLevel.Information);
 });
 
 builder.Services.AddScoped<EmployeeRepository>();

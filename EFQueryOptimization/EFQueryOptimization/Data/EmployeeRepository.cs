@@ -61,9 +61,25 @@ public class EmployeeRepository
     }
 
     [Benchmark]
-    public async Task<List<EmployeeDto>> GetEmployees_Tunned()
+    public List<EmployeeDto> GetEmployees_Tunned()
     {
-        await Task.Delay(100);
-        return new List<EmployeeDto>();
+        string[] departments = ["Backend", "Cloud"];
+
+        var employees = context.Employees
+            .Where(x => departments.Contains(x.Department.Name)
+            && x.Company.FoundedAt.Year == 2022
+            && x.PayRolls.Any(x => x.Type == "Bonus"))
+            .Select(x => new EmployeeDto
+            {
+                Id = x.Id,
+                Name = x.Name,
+                CompanyName = x.Company.Name,
+                Username = x.User.UserName
+            })
+            .OrderBy(x => x.Id)
+            .Take(2)
+            .ToList();
+
+        return employees;
     }
 }
