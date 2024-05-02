@@ -5,10 +5,6 @@ using EFQueryOptimization.Data;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
-BenchmarkRunner.Run<EFPerfBenchmark>();
-
-return;
-
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddEndpointsApiExplorer();
