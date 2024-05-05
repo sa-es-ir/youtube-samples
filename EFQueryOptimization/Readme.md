@@ -11,6 +11,6 @@
 2. Make sure the connection string is correctly matched with your local SQL server. Check file ApplicationContext.cs
 3. Run EF migration. Go to the project root dir and run `dotnet ef database update` or `Update-Database` if you're using PMC tool on Windows
 
-For all cases in which you want to optimize the query please watch this video: 👇
+## For all cases in which you want to optimize the query please watch this video: 👇
 
 [![Watch the video](https://img.youtube.com/vi/nQC4awFqRkE/hqdefault.jpg)](https://youtu.be/nQC4awFqRkE)
