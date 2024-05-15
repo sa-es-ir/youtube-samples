@@ -39,7 +39,7 @@ internal class EventConsumerJob : BackgroundService
 
                 _logger.LogInformation($"Consumed message '{consumeResult.Message.Value}' at: '{consumeResult.Offset}'");
             }
-            catch (OperationCanceledException)
+            catch (Exception)
             {
                 // Ignore
             }
