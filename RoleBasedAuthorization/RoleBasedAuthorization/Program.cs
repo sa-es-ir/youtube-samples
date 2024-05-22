@@ -5,10 +5,17 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+builder.Services.AddControllers();
 builder.Services.AddScoped<IUserRepositoy, UserRepository>();
 
+builder.Services.AddAuthentication()
+    .AddJwtBearer();
+
+builder.Services.AddAuthorization();
 
 var app = builder.Build();
+
+app.MapControllers();
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
@@ -19,7 +26,11 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
-app.MapGet("/users-minimal", [Authorize(Roles = "Admin")] () =>
+app.UseAuthentication();
+app.UseAuthorization();
+
+
+app.MapGet("/users-minimal", () =>
 {
     var users = new[]
          {
@@ -30,6 +41,7 @@ app.MapGet("/users-minimal", [Authorize(Roles = "Admin")] () =>
 
     return users;
 })
+.RequireAuthorization(new AuthorizeAttribute { Roles = "Admin" })
 .WithOpenApi();
 
 app.Run();
