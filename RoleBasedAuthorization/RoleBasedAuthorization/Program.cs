@@ -1,5 +1,7 @@
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
 using RoleBasedAuthorization;
+using System.Security.Claims;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -9,7 +11,22 @@ builder.Services.AddControllers();
 builder.Services.AddScoped<IUserRepositoy, UserRepository>();
 
 builder.Services.AddAuthentication()
-    .AddJwtBearer();
+    .AddJwtBearer(options =>
+    {
+        options.Events = new JwtBearerEvents()
+        {
+            OnTokenValidated = async context =>
+            {
+                var userRepository = context.HttpContext.RequestServices.GetRequiredService<IUserRepositoy>();
+
+                var userRoles = await userRepository.GetUserRolesAsync(context.Principal!.Identity!.Name, context.HttpContext.RequestAborted);
+
+                var userClaims = userRoles.Select(role => new Claim(ClaimTypes.Role, role));
+
+                ((ClaimsIdentity)context.Principal!.Identity!).AddClaims(userClaims);
+            }
+        };
+    });
 
 builder.Services.AddAuthorization();
 
@@ -30,7 +47,7 @@ app.UseAuthentication();
 app.UseAuthorization();
 
 
-app.MapGet("/users-minimal", () =>
+app.MapGet("/users-minimal", [Authorize(Roles = "Admin")] () =>
 {
     var users = new[]
          {
@@ -41,7 +58,6 @@ app.MapGet("/users-minimal", () =>
 
     return users;
 })
-.RequireAuthorization(new AuthorizeAttribute { Roles = "Admin" })
 .WithOpenApi();
 
 app.Run();
