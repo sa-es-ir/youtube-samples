@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.9.34728.123
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RoleBasedAuthorization", "RoleBasedAuthorization\RoleBasedAuthorization.csproj", "{C3DE7C5F-B4D5-49B7-BC96-7BCCA6A9F618}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C3DE7C5F-B4D5-49B7-BC96-7BCCA6A9F618}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C3DE7C5F-B4D5-49B7-BC96-7BCCA6A9F618}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C3DE7C5F-B4D5-49B7-BC96-7BCCA6A9F618}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C3DE7C5F-B4D5-49B7-BC96-7BCCA6A9F618}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {CA3DA390-2D11-40B2-B5CE-1A614BCE66D4}
+	EndGlobalSection
+EndGlobal
