@@ -19,5 +19,6 @@ This repo will be updated after each video is posted. Keep tuned!
 | [SQL Server Indexing: How database engine chooses an index for a query?](https://youtu.be/n7VF9FUpaJU)    | No Code!   |
 | [.NET Aspire: How to use RabbitMQ component step by step?](https://youtu.be/sOBqIleKiFo)    | [AspireTemplate](https://github.com/sa-es-ir/AspireTemplate)   |
 | [🔐 ASP.NET Core Authentication: JWT token validation using OpenID Connect (OIDC)](https://youtu.be/Z6mFeNQ4t7A)    | [OpenIdConnectAuthentication](https://github.com/sa-es-ir/youtube-samples/tree/main/OpenIdConnectAuthentication)   |
-
+| [🆒️ .NET Aspire: How it works behind the scenes?](https://youtu.be/9U3Mt02gkvE)    | [AspireTemplate](https://github.com/sa-es-ir/AspireTemplate)   |
+| [What is the difference between BackgroundService and HostedService?](https://youtu.be/ebUc-FyE0-o)    | [HostedServiceAndBackgroundService](https://github.com/sa-es-ir/youtube-samples/tree/main/HostedServiceAndBackgroundService)   |
 
