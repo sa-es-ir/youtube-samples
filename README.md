@@ -13,4 +13,11 @@ This repo will be updated after each video is posted. Keep tuned!
 | [Multi-Tenant applications: How to do it in the correct way!](https://youtu.be/5YX3cQCq3Tg)    | [MultiTenantDbContext](https://github.com/sa-es-ir/youtube-samples/tree/main/MultiTenantDbContext)   |
 | [.NET: Console Application + Gaming!](https://youtu.be/JkkjS11rfxc)    | No code!   |
 | [💥 gRPC on .NET: How to use gRPC in ASP.NET Core Api](https://youtu.be/SgCAPjyotLM)    | [GrpcOnAspNet](https://github.com/sa-es-ir/youtube-samples/tree/main/GrpcOnAspNet)   |
+| [🚀 ASP.NET Core: Faster Api with Multi-Layer cache!](https://youtu.be/Au94GcJDBxM)    | [MultiLayerCache](https://github.com/sa-es-ir/youtube-samples/tree/main/MultiLayerCache)   |
+| [.NET Aspire: How to use Redis step by step](https://youtu.be/W5o5ot17uUY)    | [AspireTemplate](https://github.com/sa-es-ir/AspireTemplate)   |
+| [.NET: Be careful about HttpClient, what's the issue and how to solve it?!](https://youtu.be/Edej78KJNSs)    | [HttpClientProblem](https://github.com/sa-es-ir/youtube-samples/tree/main/HttpClientProblem)   |
+| [SQL Server Indexing: How database engine chooses an index for a query?](https://youtu.be/n7VF9FUpaJU)    | No Code!   |
+| [.NET Aspire: How to use RabbitMQ component step by step?](https://youtu.be/sOBqIleKiFo)    | [AspireTemplate](https://github.com/sa-es-ir/AspireTemplate)   |
+| [🔐 ASP.NET Core Authentication: JWT token validation using OpenID Connect (OIDC)](https://youtu.be/Z6mFeNQ4t7A)    | [OpenIdConnectAuthentication](https://github.com/sa-es-ir/youtube-samples/tree/main/OpenIdConnectAuthentication)   |
+
 
