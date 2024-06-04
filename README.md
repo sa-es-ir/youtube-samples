@@ -21,4 +21,7 @@ This repo will be updated after each video is posted. Keep tuned!
 | [🔐 ASP.NET Core Authentication: JWT token validation using OpenID Connect (OIDC)](https://youtu.be/Z6mFeNQ4t7A)    | [OpenIdConnectAuthentication](https://github.com/sa-es-ir/youtube-samples/tree/main/OpenIdConnectAuthentication)   |
 | [🆒️ .NET Aspire: How it works behind the scenes?](https://youtu.be/9U3Mt02gkvE)    | [AspireTemplate](https://github.com/sa-es-ir/AspireTemplate)   |
 | [What is the difference between BackgroundService and HostedService?](https://youtu.be/ebUc-FyE0-o)    | [HostedServiceAndBackgroundService](https://github.com/sa-es-ir/youtube-samples/tree/main/HostedServiceAndBackgroundService)   |
+| [🔆 C# Serializers: NewtonSoft vs Protobuf vs Apache.Avro vs MessagePack vs Bson](https://youtu.be/qWacutAW3e8)    | [SerializerComparison](https://github.com/sa-es-ir/youtube-samples/tree/main/SerializerComparison)   |
+| [EF Core: Be careful about Find method cache!](https://youtu.be/RRx5Rr92Bbg)    | [EFCheckFind](https://github.com/sa-es-ir/youtube-samples/tree/main/EFCheckFind)   |
+| [❌️ ASP.NET Dependency Injection: You may be wrong about Scoped services!](https://youtu.be/hok4e7PLt7Y)    | [DependencyInjectionScoped](https://github.com/sa-es-ir/DependencyInjectionScoped)   |
 
