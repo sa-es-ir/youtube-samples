@@ -24,4 +24,6 @@ This repo will be updated after each video is posted. Keep tuned!
 | [🔆 C# Serializers: NewtonSoft vs Protobuf vs Apache.Avro vs MessagePack vs Bson](https://youtu.be/qWacutAW3e8)    | [SerializerComparison](https://github.com/sa-es-ir/youtube-samples/tree/main/SerializerComparison)   |
 | [EF Core: Be careful about Find method cache!](https://youtu.be/RRx5Rr92Bbg)    | [EFCheckFind](https://github.com/sa-es-ir/youtube-samples/tree/main/EFCheckFind)   |
 | [❌️ ASP.NET Dependency Injection: You may be wrong about Scoped services!](https://youtu.be/hok4e7PLt7Y)    | [DependencyInjectionScoped](https://github.com/sa-es-ir/DependencyInjectionScoped)   |
+| [♾️ ASP.NET Dependency Injection: Handle multiple implementations for one interface with delegate](https://youtu.be/hd4uZsVHe-Y)    | [MultpleInterfaceImp](https://github.com/sa-es-ir/youtube-samples/tree/main/MultpleInterfaceImp)   |
+| [👨‍💻 C# xUnit: How to run code before and after a test!](https://youtu.be/-k1yarG2pbI)    | [XUnitSample](https://github.com/sa-es-ir/youtube-samples/tree/main/XUnitSample/XUnitSample)   |
 
