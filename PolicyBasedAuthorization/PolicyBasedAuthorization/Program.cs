@@ -1,49 +1,33 @@
 var builder = WebApplication.CreateBuilder(args);
 
-builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
 builder.Services.AddControllers();
 
 builder.Services.AddAuthentication()
     .AddJwtBearer();
 
-builder.Services.AddAuthorization(options =>
-{
-    options.AddPolicy("UserGroup", policy =>
-    {
-        policy.RequireAuthenticatedUser();
-        policy.RequireClaim("user-group",
-            allowedValues: ["FE", "Mobile"]
-            );
-    });
-});
+builder.Services.AddAuthorization();
 
 var app = builder.Build();
 
-if (app.Environment.IsDevelopment())
-{
-    app.UseSwagger();
-    app.UseSwaggerUI();
-}
-
 app.UseHttpsRedirection();
+app.UseRouting();
+app.MapControllers();
 
 app.UseAuthentication();
 app.UseAuthorization();
 
 
-app.MapGet("/users-minimal", () =>
+app.MapGet("/products-minimal", () =>
 {
-    var users = new[]
-         {
-            new { Id = 1, Name = "John" },
-            new { Id = 2, Name = "Jane" },
-            new { Id = 3, Name = "Jack" }
+    var products = new[]
+          {
+            new { Id = 1, Name = "Laptop" },
+            new { Id = 2, Name = "Mouse" },
+            new { Id = 3, Name = "Keyboard" }
         };
 
-    return users;
+    return products;
 })
-.RequireAuthorization("UserGroup")
-.WithOpenApi();
+.RequireAuthorization();
 
 app.Run();

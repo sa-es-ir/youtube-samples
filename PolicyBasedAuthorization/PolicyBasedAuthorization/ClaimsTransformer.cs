@@ -6,12 +6,6 @@ internal class ClaimsTransformer(UserService userService) : IClaimsTransformatio
 {
     public Task<ClaimsPrincipal> TransformAsync(ClaimsPrincipal principal)
     {
-        var userClaims = userService.GetUserClaims(principal.Identity!.Name!);
-
-        var identity = new ClaimsIdentity(userClaims.Select(claim => new Claim("user-group", claim)));
-
-        principal.AddIdentity(identity);
-
         return Task.FromResult(principal);
     }
 }
