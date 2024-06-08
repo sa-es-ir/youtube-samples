@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace PolicyBasedAuthorization.Controllers;
 
 [Route("products")]
-[Authorize()]
+[Authorize(policy: AuthConstants.UserGroupMobile)]
 public class ProductsController : ControllerBase
 {
 

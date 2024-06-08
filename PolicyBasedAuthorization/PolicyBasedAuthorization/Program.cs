@@ -1,11 +1,28 @@
+using Microsoft.AspNetCore.Authentication;
+using PolicyBasedAuthorization;
+
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllers();
+builder.Services.AddTransient<UserService>();
+builder.Services.AddTransient<IClaimsTransformation, ClaimsTransformer>();
 
 builder.Services.AddAuthentication()
     .AddJwtBearer();
 
-builder.Services.AddAuthorization();
+builder.Services.AddAuthorization(options =>
+{
+    options.AddPolicy(AuthConstants.UserGroupWeb, policy =>
+    {
+        policy.RequireClaim(AuthConstants.UserGroupClaim, AuthConstants.WebClaim);
+    });
+
+    options.AddPolicy(AuthConstants.UserGroupMobile, policy =>
+    {
+        policy.RequireRole("guest");
+        policy.RequireClaim(AuthConstants.UserGroupClaim, AuthConstants.MobileClaim);
+    });
+});
 
 var app = builder.Build();
 
@@ -28,6 +45,6 @@ app.MapGet("/products-minimal", () =>
 
     return products;
 })
-.RequireAuthorization();
+.RequireAuthorization(AuthConstants.UserGroupWeb);
 
 app.Run();
