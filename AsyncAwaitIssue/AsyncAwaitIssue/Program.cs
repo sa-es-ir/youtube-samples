@@ -14,7 +14,7 @@ app.MapGet("/", () =>
 {
     return "Hello World!";
 })
-.WithName("GetWeatherForecast");
+.WithName("HelloApi");
 
 app.Run();
 
