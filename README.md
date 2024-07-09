@@ -1,11 +1,12 @@
 # All YouTube sample codes I use in my channel
-This repo will be updated after each video is posted. Keep tuned!
+This repository contains the source code I use in the YouTube video and will be updated after each video is posted. Keep tuned!
 ## Visit here: [YouTube Channel](https://www.youtube.com/@sa-es-ir)
 
 ### Content List (order by date desc)
 
 | Title | Path  |
 |----------|----------|
+| [🔐 ASP.NET Core Authorization: Policy-Based Access Control](https://youtu.be/eEC85W0muU4)    | [PolicyBaseAuthorization](https://github.com/sa-es-ir/youtube-samples/tree/main/PolicyBasedAuthorization)  |
 | [🔐 ASP.NET Core Authorization: Role-Based Access Control (RBAC)](https://youtu.be/zzqlBS0E81s)    | [RoleBaseAuthorization](https://github.com/sa-es-ir/youtube-samples/tree/main/RoleBasedAuthorization)  |
 | [🌶️ How to use Kafka in .NET 8?](https://youtu.be/-jh1Yy_ymLk)    | [KafkaDotNet](https://github.com/sa-es-ir/youtube-samples/tree/main/KafkaDotNet)   |
 | [🚀 EF Core 8: How to optimize a query?](https://youtu.be/nQC4awFqRkE)    | [EFQueryOptimization](https://github.com/sa-es-ir/youtube-samples/tree/main/EFQueryOptimization)   |
