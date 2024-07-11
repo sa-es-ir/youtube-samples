@@ -31,8 +31,6 @@ public class BackgroundJob : BackgroundService
     {
         _logger.LogInformation("RepositoryMethodAsync is starting.");
 
-        DoSomething();
-
         await DatabaseCallAsync(stoppingToken);
 
         _logger.LogInformation("RepositoryMethodAsync is stopping.");
@@ -43,6 +41,9 @@ public class BackgroundJob : BackgroundService
         _logger.LogInformation("DatabaseCallAsync is starting.");
 
 
+        //await Task.Run(() => DoSomething());
+
+        await Task.Yield();
 
         await Task.Delay(30_000, stoppingToken);
 
@@ -51,7 +52,7 @@ public class BackgroundJob : BackgroundService
 
     public void DoSomething()
     {
-        _logger.LogInformation("----------->DoSomething is starting.");
+        _logger.LogInformation("DoSomething is starting.");
 
         var tokenSource = new CancellationTokenSource(TimeSpan.FromSeconds(30));
 
@@ -59,6 +60,6 @@ public class BackgroundJob : BackgroundService
         {
         }
 
-        _logger.LogInformation("----------->DoSomething is stopping.");
+        _logger.LogInformation("DoSomething is stopping.");
     }
 }
