@@ -4,8 +4,9 @@ This repository contains the source code I use in the YouTube video and will be 
 
 ### Content List (order by date desc)
 
-| Title | Path  |
+| Video Title | Code  |
 |----------|----------|
+| [🌵 Can Async/Await block the main thread?](https://youtu.be/DsrNLo8tahs)    | [AsyncAwaitIssue](https://github.com/sa-es-ir/youtube-samples/tree/main/AsyncAwaitIssue)  |
 | [🔐 ASP.NET Core Authorization: Policy-Based Access Control](https://youtu.be/eEC85W0muU4)    | [PolicyBaseAuthorization](https://github.com/sa-es-ir/youtube-samples/tree/main/PolicyBasedAuthorization)  |
 | [🔐 ASP.NET Core Authorization: Role-Based Access Control (RBAC)](https://youtu.be/zzqlBS0E81s)    | [RoleBaseAuthorization](https://github.com/sa-es-ir/youtube-samples/tree/main/RoleBasedAuthorization)  |
 | [🌶️ How to use Kafka in .NET 8?](https://youtu.be/-jh1Yy_ymLk)    | [KafkaDotNet](https://github.com/sa-es-ir/youtube-samples/tree/main/KafkaDotNet)   |
