@@ -2,23 +2,27 @@
 
 public interface IPizza
 {
+    PizzaType Type { get; }
     Task MakePizza();
 }
 
-
-// write a class that implements the IPizza interface using the template method pattern, use a base class to implement the template method and derived classes to implement the steps of the algorithm
-
 public abstract class PizzaBase : IPizza
 {
+    public virtual PizzaType Type => PizzaType.None;
+
     // Template method
     public async Task MakePizza()
     {
+        Console.WriteLine($"Making a {Type} pizza.");
+
         PrepareDough();
         await AddToppings();
         await AddExtraCheese();
         Bake();
         Cut();
         Serve();
+
+        Console.WriteLine($"The {Type} pizza is made and served.");
     }
 
     protected virtual void PrepareDough()
@@ -42,24 +46,5 @@ public abstract class PizzaBase : IPizza
     protected virtual void Serve()
     {
         Console.WriteLine("Serving the pizza.");
-    }
-}
-
-
-public class MargheritaPizza : PizzaBase, IPizza
-{
-    protected override async Task AddToppings()
-    {
-        await Task.Delay(1000);
-        Console.WriteLine("Adding tomato sauce, mozzarella, and basil.");
-    }
-}
-
-public class PepperoniPizza : PizzaBase, IPizza
-{
-    protected override async Task AddToppings()
-    {
-        await Task.Delay(1000);
-        Console.WriteLine("Adding tomato sauce, mozzarella, and pepperoni.");
     }
 }
