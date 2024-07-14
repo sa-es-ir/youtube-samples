@@ -2,8 +2,7 @@
 
 public class MargheritaPizza : PizzaBase, IPizza
 {
-    public override PizzaType Type => PizzaType.Margherita;
-
+    override public PizzaType Type => PizzaType.Margherita;
     protected override async Task AddToppings()
     {
         await Task.Delay(1000);
