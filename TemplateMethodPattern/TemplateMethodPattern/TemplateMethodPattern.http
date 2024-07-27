@@ -1,6 +1,0 @@
-@TemplateMethodPattern_HostAddress = http://localhost:5098
-
-GET {{TemplateMethodPattern_HostAddress}}/weatherforecast/
-Accept: application/json
-
-###
