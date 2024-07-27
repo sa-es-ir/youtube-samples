@@ -4,7 +4,8 @@ using TemplateMethodPattern.PizzaMaker;
 
 var builder = WebApplication.CreateBuilder(args);
 
-builder.Services.AddScoped<IPizza, MargheritaPizza>();
+builder.Services.AddKeyedScoped<IPizza, MargheritaPizza>(PizzaType.Margherita);
+builder.Services.AddKeyedScoped<IPizza, PepperoniPizza>(PizzaType.Pepperoni);
 
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.Configure<JsonOptions>(options =>
@@ -16,9 +17,12 @@ var app = builder.Build();
 
 app.UseHttpsRedirection();
 
-
-app.MapPost("/pizza", async ([FromServices] IPizza pizza) =>
+app.MapPost("/pizza/{type}", async ([FromRoute] PizzaType type, [FromServices] IServiceScopeFactory scopeFactory) =>
 {
+    var scope = scopeFactory.CreateScope();
+
+    var pizza = scope.ServiceProvider.GetRequiredKeyedService<IPizza>(type);
+
     await pizza.MakePizza();
 
     return "Pizza is ready!";
