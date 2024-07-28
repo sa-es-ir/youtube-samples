@@ -6,6 +6,7 @@ This repository contains the source code I use in the YouTube video and will be 
 
 | Video Title | Code  |
 |----------|----------|
+| [Template Method pattern: Refactor and make your application plug-in-able](https://youtu.be/ncot574kjC8)    | [AsyncAwaitIssue](https://github.com/sa-es-ir/youtube-samples/tree/main/AsyncAwaitIssue)  |
 | [🌵 Can Async/Await block the main thread?](https://youtu.be/DsrNLo8tahs)    | [AsyncAwaitIssue](https://github.com/sa-es-ir/youtube-samples/tree/main/AsyncAwaitIssue)  |
 | [🔐 ASP.NET Core Authorization: Policy-Based Access Control](https://youtu.be/eEC85W0muU4)    | [PolicyBaseAuthorization](https://github.com/sa-es-ir/youtube-samples/tree/main/PolicyBasedAuthorization)  |
 | [🔐 ASP.NET Core Authorization: Role-Based Access Control (RBAC)](https://youtu.be/zzqlBS0E81s)    | [RoleBaseAuthorization](https://github.com/sa-es-ir/youtube-samples/tree/main/RoleBasedAuthorization)  |
