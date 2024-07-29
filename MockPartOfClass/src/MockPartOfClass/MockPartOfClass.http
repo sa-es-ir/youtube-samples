@@ -1,0 +1,6 @@
+@MockPartOfClass_HostAddress = http://localhost:5248
+
+GET {{MockPartOfClass_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
