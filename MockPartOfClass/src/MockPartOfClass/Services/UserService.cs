@@ -36,7 +36,7 @@ public class UserService
         });
     }
 
-    private async Task<GithubUserDto?> GetUserFromGithubAsync(string username)
+    public virtual async Task<GithubUserDto?> GetUserFromGithubAsync(string username)
     {
 
         var httpClient = _httpClientFactory.CreateClient("GithubAPI");

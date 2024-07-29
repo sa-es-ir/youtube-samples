@@ -35,3 +35,5 @@ app.MapGet("/users/{username}", async (string username, [FromServices] UserServi
 
 app.Run();
 
+public partial class Program { }
+
