@@ -4,9 +4,8 @@ using MockPartOfClass.Services;
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
 
-builder.Services.AddScoped<UserService>();
+builder.Services.AddScoped<IUserService, UserService>();
 builder.Services.AddHttpClient("GithubAPI", client =>
 {
     client.BaseAddress = new Uri("https://api.github.com/");
@@ -16,22 +15,14 @@ builder.Services.AddHttpClient("GithubAPI", client =>
 
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
-{
-    app.UseSwagger();
-    app.UseSwaggerUI();
-}
-
 app.UseHttpsRedirection();
 
 
-app.MapGet("/users/{username}", async (string username, [FromServices] UserService userService) =>
+app.MapGet("/users/{username}", async (string username, [FromServices] IUserService userService) =>
 {
     return await userService.GetUserAsync(username);
 })
-.WithName("Users")
-.WithOpenApi();
+.WithName("Users");
 
 app.Run();
 

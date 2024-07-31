@@ -2,7 +2,12 @@
 
 namespace MockPartOfClass.Services;
 
-public class UserService
+public interface IUserService
+{
+    Task<UserDto> GetUserAsync(string username);
+}
+
+public class UserService : IUserService
 {
     private readonly IHttpClientFactory _httpClientFactory;
 
@@ -38,7 +43,6 @@ public class UserService
 
     public virtual async Task<GithubUserDto?> GetUserFromGithubAsync(string username)
     {
-
         var httpClient = _httpClientFactory.CreateClient("GithubAPI");
         var response = await httpClient.GetAsync($"users/{username}");
 
@@ -49,5 +53,4 @@ public class UserService
 
         return await response.Content.ReadFromJsonAsync<GithubUserDto>();
     }
-
 }
