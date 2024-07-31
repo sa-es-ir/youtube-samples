@@ -7,19 +7,18 @@ namespace MockPartOfClass.IntegrationTest;
 
 public class UserApiTest : IClassFixture<WebApplicationFactoryTest<Program>>
 {
-    private readonly WebApplicationFactoryTest<Program> _factory;
+    private readonly HttpClient _httpClient;
 
     public UserApiTest(WebApplicationFactoryTest<Program> factory)
     {
-        _factory = factory;
+        _httpClient = factory.CreateClient();
     }
 
     [Fact]
     public async Task GetUser_ValidUsername_ReturnsOk()
     {
-        var httpClient = _factory.CreateClient();
-
-        var response = await httpClient.GetAsync("/users/sa-es-ir");
+        var username = "sa-es-ir";
+        var response = await _httpClient.GetAsync($"/users/{username}");
 
         response.StatusCode.Should().Be(HttpStatusCode.OK);
 
