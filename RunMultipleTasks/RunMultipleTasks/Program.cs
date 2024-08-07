@@ -12,6 +12,10 @@ try
 
     //await Task.WhenAll(taskOne, taskTwo, taskThree);
 
+    //await taskOne;
+    //await taskTwo;
+    //await taskThree;
+
     await TaskExtentions.CustomWhenAll(new List<Task> { taskOne, taskTwo, taskThree });
 
     Console.WriteLine($"In Parallel End: {TimeProvider.System.GetLocalNow()}\r\n");
