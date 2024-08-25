@@ -6,6 +6,7 @@ This repository contains the source code I use in the YouTube video and will be 
 
 | Video Title | Code  |
 |----------|----------|
+| [🔥 Don't use Task.WhenAll, it may not be efficient enough!](https://youtu.be/dKAw1eIgggU)    | [RunMultipleTasks](https://github.com/sa-es-ir/youtube-samples/tree/main/RunMultipleTasks)  |
 | [Integration Test: Mock PartOf a class](https://youtu.be/vZQnJD-KAWA)    | [MockPartOfClass](https://github.com/sa-es-ir/youtube-samples/tree/main/MockPartOfClass)  |
 | [🍕 Template Method pattern: Refactor and make your application plug-in-able](https://youtu.be/ncot574kjC8)    | [TemplateMethodPattern](https://github.com/sa-es-ir/youtube-samples/tree/main/TemplateMethodPattern)  |
 | [🌵 Can Async/Await block the main thread?](https://youtu.be/DsrNLo8tahs)    | [AsyncAwaitIssue](https://github.com/sa-es-ir/youtube-samples/tree/main/AsyncAwaitIssue)  |
