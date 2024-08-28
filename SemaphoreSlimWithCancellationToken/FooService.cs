@@ -6,7 +6,7 @@ public class FooService
 
     public async Task DoSomethingAsync(CancellationToken cancellationToken)
     {
-        await _semaphore.WaitAsync();
+        await _semaphore.WaitAsync(cancellationToken);
         try
         {
             Console.WriteLine($"Enter to Critical zone at {TimeProvider.System.GetLocalNow()}");
