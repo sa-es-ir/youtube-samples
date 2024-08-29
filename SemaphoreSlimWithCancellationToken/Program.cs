@@ -1,17 +1,26 @@
-﻿// See https://aka.ms/new-console-template for more information
-using SemaphoreSlimWithCancellationToken;
-
-Console.WriteLine("Hello, World!");
+﻿using SemaphoreSlimWithCancellationToken;
 
 
-var fooService = new FooService();
+var semaphore = new LockAndSemaphore();
+
+var task1s = semaphore.DoWithSemaphore(1);
+var task2s = semaphore.DoWithSemaphore(2);
+var task3s = semaphore.DoWithSemaphore(3);
+var task4s = semaphore.DoWithSemaphore(4);
+
+await Task.WhenAll(task1s, task2s, task3s, task4s);
+
+var task1l = semaphore.DoWithLock(1);
+var task2l = semaphore.DoWithLock(2);
+var task3l = semaphore.DoWithLock(3);
+var task4l = semaphore.DoWithLock(4);
+
+await Task.WhenAll(task1l, task2l, task3l, task4l);
+
+
+var semaphoreWithCT = new SemaphoreWithCT();
 
 var cts = new CancellationTokenSource();
+cts.CancelAfter(500);
 
-var task1 = fooService.DoSomethingAsync(cts.Token);
-var task2 = fooService.DoSomethingAsync(cts.Token);
-var task3 = fooService.DoSomethingAsync(cts.Token);
-var task4 = fooService.DoSomethingAsync(cts.Token);
-var task5 = fooService.DoSomethingAsync(cts.Token);
-
-await Task.WhenAll(task1, task2, task3, task4, task5);
+await semaphoreWithCT.DoSomethingAsync(cts.Token);
