@@ -2,7 +2,7 @@
 
 internal class LockAndSemaphore
 {
-    private readonly SemaphoreSlim _semaphore = new(initialCount: 2);
+    private readonly SemaphoreSlim _semaphore = new(initialCount: 1);
 
     public async Task DoWithSemaphore(int taskNumber)
     {
