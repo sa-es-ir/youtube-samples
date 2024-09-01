@@ -6,21 +6,22 @@ public class SemaphoreV1
 
     public async Task DoSomethingAsync(CancellationToken cancellationToken)
     {
-        await _semaphore.WaitAsync(cancellationToken);
         try
         {
+            await _semaphore.WaitAsync(cancellationToken);
+
             Console.WriteLine($"Enter to Critical zone at {TimeProvider.System.GetLocalNow()}");
 
             await Task.Delay(1000, cancellationToken);
         }
-
         catch (Exception ex)
         {
             Console.WriteLine($"-->ERR: {ex.Message}");
         }
         finally
         {
-            _semaphore.Release();
+            if (!cancellationToken.IsCancellationRequested)
+                _semaphore.Release();
         }
     }
 }
