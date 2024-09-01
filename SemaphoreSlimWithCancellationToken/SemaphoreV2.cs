@@ -9,7 +9,7 @@ public class SemaphoreV2
         var lockTaken = false;
         try
         {
-            await _semaphore.WaitAsync(cancellationToken);
+            lockTaken = await _semaphore.WaitAsync(Timeout.Infinite, cancellationToken);
             Console.WriteLine($"Enter to Critical zone at {TimeProvider.System.GetLocalNow()}");
 
             await Task.Delay(1000, cancellationToken);
