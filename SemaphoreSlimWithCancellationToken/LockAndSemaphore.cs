@@ -2,7 +2,8 @@
 
 internal class LockAndSemaphore
 {
-    private readonly SemaphoreSlim _semaphore = new(initialCount: 1);
+    private readonly SemaphoreSlim _semaphore = new(initialCount: 2, maxCount: 2);
+    private readonly object _lock = new();
 
     public async Task DoWithSemaphore(int taskNumber)
     {
@@ -21,7 +22,7 @@ internal class LockAndSemaphore
 
     public async Task DoWithLock(int taskNumber)
     {
-        lock (_semaphore)
+        lock (_lock)
         {
             Console.WriteLine($"{taskNumber} Enter to Critical zone at {TimeProvider.System.GetLocalNow()}");
 
