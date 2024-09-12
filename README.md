@@ -1,4 +1,4 @@
-# All YouTube sample codes I use in my channel
+# All the sample code I use on my YouTube channel
 This repository contains the source code I use in the YouTube video and will be updated after each video is posted. Keep tuned!
 ## Visit here: [YouTube Channel](https://www.youtube.com/@sa-es-ir)
 
