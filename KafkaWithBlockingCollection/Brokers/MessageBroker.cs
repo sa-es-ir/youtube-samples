@@ -1,7 +1,7 @@
 ﻿using System.Collections.Concurrent;
 using System.Text.Json;
 
-namespace KafkaWithBlockingCollection;
+namespace KafkaWithBlockingCollection.Brokers;
 
 public class MessageBroker : IMessageBroker
 {

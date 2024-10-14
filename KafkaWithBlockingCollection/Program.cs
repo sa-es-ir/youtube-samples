@@ -1,4 +1,8 @@
+using KafkaWithBlockingCollection.Brokers;
+
 var builder = WebApplication.CreateBuilder(args);
+
+builder.Services.AddSingleton<IMessageBroker, MessageBroker>();
 
 // Add services to the container.
 // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
@@ -14,28 +18,20 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
-var summaries = new[]
-{
-    "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
-};
 
-app.MapGet("/weatherforecast", () =>
+app.MapGet("/produce-message", (string topic, IMessageBroker messageBroker) =>
 {
-    var forecast =  Enumerable.Range(1, 5).Select(index =>
-        new WeatherForecast
-        (
-            DateOnly.FromDateTime(DateTime.Now.AddDays(index)),
-            Random.Shared.Next(-20, 55),
-            summaries[Random.Shared.Next(summaries.Length)]
-        ))
-        .ToArray();
-    return forecast;
+    var message = new MessageModel
+    {
+        Id = Guid.NewGuid(),
+        Name = $"{topic}__{Guid.NewGuid()}",
+        Description = $"A description for {topic}"
+    };
+
+    messageBroker.Produce(topic, message);
+    return message;
 })
-.WithName("GetWeatherForecast");
+.WithName("ProduceMessage")
+.WithOpenApi();
 
 app.Run();
-
-record WeatherForecast(DateOnly Date, int TemperatureC, string? Summary)
-{
-    public int TemperatureF => 32 + (int)(TemperatureC / 0.5556);
-}

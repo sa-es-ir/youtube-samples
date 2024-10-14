@@ -1,5 +1,4 @@
-﻿
-namespace KafkaWithBlockingCollection;
+﻿namespace KafkaWithBlockingCollection.Brokers;
 
 public interface IMessageBroker
 {
