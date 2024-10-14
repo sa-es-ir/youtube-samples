@@ -33,7 +33,6 @@ app.MapGet("/produce-message", (IMessageBroker messageBroker) =>
     messageBroker.Produce(Constants.TOPIC, message);
     return message;
 })
-.WithName("ProduceMessage")
-.WithOpenApi();
+.WithName("ProduceMessage");
 
 app.Run();

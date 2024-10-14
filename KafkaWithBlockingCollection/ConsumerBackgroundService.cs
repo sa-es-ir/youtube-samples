@@ -24,10 +24,17 @@ public class ConsumerBackgroundService : BackgroundService
 
             if (message is not null)
             {
-                _logger.LogInformation("Got a message with Id: {messageId} and Name: {name}", message.Id, message.Name);
+                _logger.LogInformation("Got a message to consume with Id: {id} and Name: {name}", message.Id, message.Name);
             }
             else
-                _logger.LogInformation("There is no message for the given topic.");
+                _logger.LogInformation("There is no message for the given topic");
         }
+    }
+
+    public override Task StopAsync(CancellationToken cancellationToken)
+    {
+        _messageBroker.Close(Constants.TOPIC);
+
+        return base.StopAsync(cancellationToken);
     }
 }

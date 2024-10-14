@@ -5,9 +5,7 @@ namespace KafkaWithBlockingCollection.Brokers;
 
 public class MessageBroker : IMessageBroker
 {
-    private readonly ConcurrentDictionary<string, BlockingCollection<string>> _topics
-        = new(StringComparer.OrdinalIgnoreCase);
-
+    private readonly ConcurrentDictionary<string, BlockingCollection<string>> _topics = new();
     private readonly ILogger<MessageBroker> _logger;
 
     public MessageBroker(ILogger<MessageBroker> logger)
@@ -17,6 +15,8 @@ public class MessageBroker : IMessageBroker
 
     public void Produce<T>(string topic, T message) where T : class
     {
+        _logger.LogInformation("Got a message to produce");
+
         if (!_topics.ContainsKey(topic))
             _topics[topic] = new BlockingCollection<string>();
 
@@ -28,7 +28,7 @@ public class MessageBroker : IMessageBroker
         if (!_topics.ContainsKey(topic))
             _topics[topic] = new BlockingCollection<string>();
 
-        if (!_topics[topic].IsCompleted && _topics[topic].TryTake(out string? message, timeout))
+        if (!_topics[topic].IsCompleted && _topics[topic].TryTake(out var message, timeout))
         {
             return JsonSerializer.Deserialize<T>(message);
         }
@@ -38,8 +38,8 @@ public class MessageBroker : IMessageBroker
 
     public void Close(string topic)
     {
-        if (_topics.ContainsKey(topic))
-            throw new Exception("Topic doesn't exist");
+        if (!_topics.ContainsKey(topic))
+            throw new Exception("There is no topic");
 
         _topics[topic].CompleteAdding();
 
