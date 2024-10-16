@@ -5,4 +5,4 @@ In this repo, I've tried to implement three methods:
 - `Close` a consumer
 
 ## You can watch the video here: 👇
-[![Watch the video](https://img.youtube.com/vi/Au94GcJDBxM/hqdefault.jpg)](https://youtu.be/Au94GcJDBxM)
+[![Watch the video](https://img.youtube.com/vi/A_LHyGAXAR8/hqdefault.jpg)](https://youtu.be/A_LHyGAXAR8)
