@@ -6,6 +6,7 @@ This repository contains the source code I use in the YouTube video and will be 
 
 | Video Title | Code  |
 |----------|----------|
+| [👉 Implement a Kafka-like message broker with .NET BlockingCollection!](https://youtu.be/A_LHyGAXAR8)    | [KafkaWithBlockingCollection](https://github.com/sa-es-ir/youtube-samples/tree/main/KafkaWithBlockingCollection)  |
 | [🐞 EF Core bug: Avoid using Async method with Large data result!](https://youtu.be/Wet1EHDNSiQ)    | [EFCoreLargeData](https://github.com/sa-es-ir/youtube-samples/tree/main/EFCoreLargeData)  |
 | [🥶 Managing Concurrency with SemaphoreSlim: Avoid DeadLock!](https://youtu.be/BuZY_k2x-IM)    | [SemaphoreSlimWithCancellationToken](https://github.com/sa-es-ir/youtube-samples/tree/main/SemaphoreSlimWithCancellationToken)  |
 | [🔥 Don't use Task.WhenAll, it may not be efficient enough!](https://youtu.be/dKAw1eIgggU)    | [RunMultipleTasks](https://github.com/sa-es-ir/youtube-samples/tree/main/RunMultipleTasks)  |
