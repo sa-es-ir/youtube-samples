@@ -2,15 +2,14 @@
 
 namespace xUnitTestRunBasic;
 
-[Collection("GuidCollection")]
 public class Class1
 {
     private readonly ITestOutputHelper _output;
     private readonly Guid guid;
 
-    public Class1(ITestOutputHelper output, GuidFixture guidFixture)
+    public Class1(ITestOutputHelper output)
     {
-        guid = guidFixture.Guid;
+        guid = Guid.NewGuid();
         _output = output;
     }
 
@@ -37,22 +36,4 @@ public class Class1
 
         await Task.Delay(3000);
     }
-}
-
-
-public class GuidFixture : IDisposable
-{
-    public Guid Guid { get; }
-    public GuidFixture()
-    {
-        Guid = Guid.NewGuid();
-    }
-    public void Dispose()
-    {
-    }
-}
-
-[CollectionDefinition("GuidCollection", DisableParallelization = false)]
-public class CollectionFixture : ICollectionFixture<GuidFixture>
-{
 }
