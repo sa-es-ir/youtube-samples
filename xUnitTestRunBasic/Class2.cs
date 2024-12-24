@@ -2,14 +2,15 @@
 
 namespace xUnitTestRunBasic;
 
+[Collection("GuidCollection")]
 public class Class2
 {
     private readonly ITestOutputHelper _output;
     private readonly Guid guid;
 
-    public Class2(ITestOutputHelper output)
+    public Class2(ITestOutputHelper output, GuidFixutre guidFixutre)
     {
-        guid = Guid.NewGuid();
+        guid = guidFixutre.Guid;
         _output = output;
     }
 
