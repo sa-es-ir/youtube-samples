@@ -8,3 +8,6 @@ I've covered these questions:
 - What is a collection?
 - How/When should I use IClassFixture and ICollectionFixture?
 
+For more details watch this video:
+
+[![Watch the video](https://img.youtube.com/vi/FhHyT5R-dQk/hqdefault.jpg)](https://youtu.be/FhHyT5R-dQk)
