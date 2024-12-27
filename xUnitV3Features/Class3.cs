@@ -1,7 +1,6 @@
 ﻿#pragma warning disable xUnit1051
 namespace xUnitV3Features;
 
-[Collection("GuidCollection")]
 public class Class3
 {
     private readonly ITestOutputHelper _output;
