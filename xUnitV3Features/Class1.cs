@@ -1,9 +1,9 @@
-﻿using xUnitV3Features;
+﻿#pragma warning disable xUnit1051
 
-[assembly: AssemblyFixture(typeof(GuidFixutre))]
 namespace xUnitV3Features;
 
 
+[Collection("GuidCollection")]
 public class Class1
 {
     private readonly ITestOutputHelper _output;
@@ -19,7 +19,6 @@ public class Class1
     public async Task Test1()
     {
         _output.WriteLine($"Test1: {guid}");
-
         await Task.Delay(1000);
     }
 
@@ -53,4 +52,12 @@ public class GuidFixutre : IDisposable
     {
         // dispose of the guid
     }
+}
+
+[CollectionDefinition("GuidCollection")]
+public class GuidCollectionFixture : ICollectionFixture<GuidFixutre>
+{
+    // This class has no code, and is never created. Its purpose is simply
+    // to be the place to apply [CollectionDefinition] and all the
+    // ICollectionFixture<> interfaces.
 }

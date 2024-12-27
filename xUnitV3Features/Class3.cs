@@ -1,15 +1,13 @@
 ﻿#pragma warning disable xUnit1051
 namespace xUnitV3Features;
 
-
-
 [Collection("GuidCollection")]
-public class Class2
+public class Class3
 {
     private readonly ITestOutputHelper _output;
     private readonly Guid guid;
 
-    public Class2(ITestOutputHelper output, GuidFixutre guidFixutre)
+    public Class3(ITestOutputHelper output, GuidFixutre guidFixutre)
     {
         guid = guidFixutre.Guid;
         _output = output;
@@ -19,9 +17,7 @@ public class Class2
     public async Task Test1()
     {
         _output.WriteLine($"Test1: {guid}");
-
         await Task.Delay(1000);
-
     }
 
     [Fact]
@@ -37,6 +33,6 @@ public class Class2
     {
         _output.WriteLine($"Test3: {guid}");
 
-        await Task.Delay(5000);
+        await Task.Delay(3000);
     }
 }
