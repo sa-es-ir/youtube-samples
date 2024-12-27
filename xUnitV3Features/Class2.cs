@@ -19,14 +19,32 @@ public class Class2
         _output.WriteLine($"Test1: {guid}");
 
         await Task.Delay(1000);
+
     }
 
-    [Fact]
+    private async Task Waiting(ITestOutputHelper output, CancellationToken cancellationToken)
+    {
+        while (!cancellationToken.IsCancellationRequested)
+        {
+            _output.WriteLine("running");
+
+            try
+            {
+                await Task.Delay(500, cancellationToken);
+            }
+            catch (Exception ex)
+            {
+                output.WriteLine(ex.Message);
+            }
+        }
+    }
+
+    [Fact(Timeout = 1500)]
     public async Task Test2()
     {
         _output.WriteLine($"Test2: {guid}");
 
-        await Task.Delay(2000);
+        await Waiting(_output, TestContext.Current.CancellationToken);
     }
 
     [Fact]
@@ -34,6 +52,6 @@ public class Class2
     {
         _output.WriteLine($"Test3: {guid}");
 
-        await Task.Delay(3000);
+        await Task.Delay(5000);
     }
 }
