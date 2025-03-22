@@ -1,0 +1,81 @@
+﻿@page "/login"
+@using System.ComponentModel.DataAnnotations
+@rendermode InteractiveServer
+@inject AuthenticationStateProvider AuthStateProvider
+@inject NavigationManager NavManager
+
+<div class="d-flex justify-content-center align-items-center vh-100">
+    <div class="card shadow-sm p-4" style="width: 100%; max-width: 400px;">
+        <div class="card-body">
+            <h3 class="text-center mb-4">Login To App</h3>
+            <EditForm Model="LoginRequest" OnValidSubmit="HandleLogin">
+                <DataAnnotationsValidator />
+                <ValidationSummary />
+                <div class="form-group">
+                    <label for="username">Username:</label>
+                    <InputText id="username" class="form-control" @bind-Value="LoginRequest.Username" />
+                </div>
+                <div class="form-group mt-3">
+                    <label for="password">Password:</label>
+                    <InputText id="password" type="password" class="form-control" @bind-Value="LoginRequest.Password" />
+                </div>
+                <div class="form-group mt-4 text-center">
+                    <button class="btn btn-primary btn-block" type="submit" disabled="@isLoading">
+                        @if (isLoading)
+                        {
+                            <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                            <span class="sr-only">Loading...</span>
+                        }
+                        else
+                        {
+                            <span>Login</span>
+                        }
+                    </button>
+                </div>
+                @if (!string.IsNullOrEmpty(ErrorMessage))
+                {
+                    <div class="alert alert-danger mt-3">
+                        @ErrorMessage
+                    </div>
+                }
+            </EditForm>
+        </div>
+    </div>
+</div>
+
+@code {
+
+    [SupplyParameterFromForm]
+    private AdminLoginRequest LoginRequest { get; set; } = new();
+
+    private string? ErrorMessage;
+    private bool isLoading = false;
+
+    private async Task HandleLogin()
+    {
+        isLoading = true;
+        try
+        {
+            var authProvider = (CustomAuthStateProvider)AuthStateProvider;
+            var token = authProvider.Login(LoginRequest.Username, LoginRequest.Password);
+
+            NavManager.NavigateTo($"/postlogin?Username={LoginRequest.Username}");
+        }
+        catch (Exception ex)
+        {
+            ErrorMessage = ex.Message;
+        }
+        finally
+        {
+            isLoading = false;
+        }
+    }
+
+    private class AdminLoginRequest
+    {
+        [Required]
+        public string Username { get; set; } = string.Empty;
+        [Required]
+        public string Password { get; set; } = string.Empty;
+    }
+}
