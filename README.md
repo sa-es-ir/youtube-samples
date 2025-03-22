@@ -6,6 +6,7 @@ This repository contains the source code I use in the YouTube video and will be 
 
 | Video Title | Code  |
 |----------|----------|
+| [🔥 xUnit version 3 is out: they finally healed the pain!](https://youtu.be/3C_BCHWAnBU)    | [xUnitV3Features](https://github.com/sa-es-ir/youtube-samples/tree/main/xUnitV3Features)  |
 | [xUnit Essentials: Test parallelism, Collections and Fixtures!](https://youtu.be/FhHyT5R-dQk)    | [xUnitTestRunBasic](https://github.com/sa-es-ir/youtube-samples/tree/main/xUnitTestRunBasic)  |
 | [👉 Implement a Kafka-like message broker with .NET BlockingCollection!](https://youtu.be/A_LHyGAXAR8)    | [KafkaWithBlockingCollection](https://github.com/sa-es-ir/youtube-samples/tree/main/KafkaWithBlockingCollection)  |
 | [🐞 EF Core bug: Avoid using Async method with Large data result!](https://youtu.be/Wet1EHDNSiQ)    | [EFCoreLargeData](https://github.com/sa-es-ir/youtube-samples/tree/main/EFCoreLargeData)  |
