@@ -1,8 +1,9 @@
 ﻿@page "/login"
 @using System.ComponentModel.DataAnnotations
 @rendermode InteractiveServer
-@inject AuthenticationStateProvider AuthStateProvider
-@inject NavigationManager NavManager
+@inject AuthenticationStateProvider AuthenticationStateProvider
+@inject IHttpContextAccessor HttpContextAccessor
+@inject NavigationManager NavigationManager
 
 <div class="d-flex justify-content-center align-items-center vh-100">
     <div class="card shadow-sm p-4" style="width: 100%; max-width: 400px;">
@@ -51,15 +52,15 @@
     private string? ErrorMessage;
     private bool isLoading = false;
 
-    private async Task HandleLogin()
+    private void HandleLogin()
     {
         isLoading = true;
         try
         {
-            var authProvider = (CustomAuthStateProvider)AuthStateProvider;
-            var token = authProvider.Login(LoginRequest.Username, LoginRequest.Password);
+            var customAuthenticationStateProvider = (CustomAuthStateProvider)AuthenticationStateProvider;
+            var token = customAuthenticationStateProvider.Login(LoginRequest.Username, LoginRequest.Password);
 
-            NavManager.NavigateTo($"/postlogin?Username={LoginRequest.Username}");
+            NavigationManager.NavigateTo("/postlogin?Token=" + token);
         }
         catch (Exception ex)
         {

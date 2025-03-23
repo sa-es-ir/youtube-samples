@@ -20,9 +20,29 @@ public class CustomAuthStateProvider : AuthenticationStateProvider
 
     public override Task<AuthenticationState> GetAuthenticationStateAsync()
     {
-        //throw new NotImplementedException();
+        try
+        {
+            if (_httpContextAccessor.HttpContext!.Request.Cookies.ContainsKey(BlazorConstants.AuthCookieName))
+            {
+                var token = _httpContextAccessor.HttpContext.Request.Cookies[BlazorConstants.AuthCookieName];
+                var handler = new JwtSecurityTokenHandler();
+                var jsonToken = handler.ReadToken(token) as JwtSecurityToken;
+                var claims = new List<Claim>();
+                foreach (var claim in jsonToken!.Claims)
+                {
+                    claims.Add(new Claim(claim.Type, claim.Value));
+                }
 
-        return Task.FromResult(new AuthenticationState(new ClaimsPrincipal()));
+                var claimsIdentity = new ClaimsIdentity(claims, "jwt");
+                var user = new ClaimsPrincipal(claimsIdentity);
+                return Task.FromResult(new AuthenticationState(user));
+            }
+            return Task.FromResult(new AuthenticationState(new ClaimsPrincipal()));
+        }
+        catch (Exception)
+        {
+            return Task.FromResult(new AuthenticationState(new ClaimsPrincipal()));
+        }
     }
 
     public string Login(string username, string password)

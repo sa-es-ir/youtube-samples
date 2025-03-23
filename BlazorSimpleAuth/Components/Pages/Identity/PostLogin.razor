@@ -1,0 +1,26 @@
+﻿@page "/postlogin"
+@inject IHttpContextAccessor HttpContextAccessor
+@inject NavigationManager NavigationManager
+
+@code {
+    [SupplyParameterFromQuery]
+    private string? Token { get; set; }
+
+    protected override void OnInitialized()
+    {
+        if (string.IsNullOrEmpty(Token))
+        {
+            NavigationManager.NavigateTo("/login");
+        }
+        else
+        {
+            HttpContextAccessor.HttpContext!.Response.Cookies.Append(BlazorConstants.AuthCookieName, Token, new CookieOptions
+            {
+                    HttpOnly = true,
+                    Expires = DateTimeOffset.Now.AddMinutes(30),
+            });
+
+            NavigationManager.NavigateTo("/");
+        }
+    }
+}

@@ -1,0 +1,14 @@
+﻿@page "/auth"
+@using BlazorSimpleAuth.Components.Pages.Identity
+
+<h3>Auth</h3>
+
+<AuthorizeView>
+    <Authorized>
+        <p>Authorized User</p>
+    </Authorized>
+
+    <NotAuthorized>
+        <Logout />
+    </NotAuthorized>
+</AuthorizeView>
