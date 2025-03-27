@@ -2,6 +2,8 @@
 This repository contains the source code I use in the YouTube video and will be updated after each video is posted. Keep tuned!
 ## Visit here: [YouTube Channel](https://www.youtube.com/@sa-es-ir)
 
+## Support me by giving a ⭐ to this repo!
+
 ### Content List (order by date desc)
 
 | Video Title | Code  |
