@@ -7,6 +7,7 @@ var builder = new HostApplicationBuilder();
 
 builder.Services.AddScoped<IScopedService, ScopedService>();
 builder.Services.AddSingleton<ISingletonService, SingletonService>();
+builder.Services.AddTransient<ITransientService, TransientService>();
 
 builder.Services.AddHostedService<SampleBackgroundService>();
 
