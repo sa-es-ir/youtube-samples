@@ -1,26 +1,33 @@
+using DeepDiveToDI.Domain;
 using Microsoft.AspNetCore.Mvc;
 
 namespace DeepDiveToDI.Api.Controllers;
 
 [ApiController]
-[Route("[controller]")]
 public class WeatherForecastController : ControllerBase
 {
-    private static readonly string[] Summaries = new[]
-    {
-        "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
-    };
+    private readonly ISingletonService _singletonService;
+    private readonly IScopedService _scopedService;
+    private readonly ITransientService _transientService;
 
-    private readonly ILogger<WeatherForecastController> _logger;
-
-    public WeatherForecastController(ILogger<WeatherForecastController> logger)
+    public WeatherForecastController(
+        ISingletonService singletonService,
+        IScopedService scopedService,
+        ITransientService transientService)
     {
-        _logger = logger;
+        _singletonService = singletonService;
+        _scopedService = scopedService;
+        _transientService = transientService;
     }
 
-    [HttpGet(Name = "GetWeatherForecast")]
+    [HttpGet("weather")]
     public IEnumerable<WeatherForecast> Get()
     {
+        string[] Summaries =
+            [
+                "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
+            ];
+
         return Enumerable.Range(1, 5).Select(index => new WeatherForecast
         {
             Date = DateOnly.FromDateTime(DateTime.Now.AddDays(index)),
