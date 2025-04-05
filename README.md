@@ -2,10 +2,13 @@
 This repository contains the source code I use in the YouTube video and will be updated after each video is posted. Keep tuned!
 ## Visit here: [YouTube Channel](https://www.youtube.com/@sa-es-ir)
 
+## Support me by giving a ⭐ to this repo!
+
 ### Content List (order by date desc)
 
 | Video Title | Code  |
 |----------|----------|
+| [🔐 Blazor: Custom Authentication with InteractiveServer rendering (EXPLAINED)](https://youtu.be/CpJh_j88_Lw)    | [BlazorSimpleAuth](https://github.com/sa-es-ir/youtube-samples/tree/main/BlazorSimpleAuth)  |
 | [🔥 xUnit version 3 is out: they finally healed the pain!](https://youtu.be/3C_BCHWAnBU)    | [xUnitV3Features](https://github.com/sa-es-ir/youtube-samples/tree/main/xUnitV3Features)  |
 | [xUnit Essentials: Test parallelism, Collections and Fixtures!](https://youtu.be/FhHyT5R-dQk)    | [xUnitTestRunBasic](https://github.com/sa-es-ir/youtube-samples/tree/main/xUnitTestRunBasic)  |
 | [👉 Implement a Kafka-like message broker with .NET BlockingCollection!](https://youtu.be/A_LHyGAXAR8)    | [KafkaWithBlockingCollection](https://github.com/sa-es-ir/youtube-samples/tree/main/KafkaWithBlockingCollection)  |
