@@ -8,6 +8,7 @@ This repository contains the source code I use in the YouTube video and will be 
 
 | Video Title | Code  |
 |----------|----------|
+| [Deep Dive on .NET Dependency Injection (EXPLAINED)](https://youtu.be/AecV8YtlEe0)    | [DeepDiveToDI](https://github.com/sa-es-ir/youtube-samples/tree/main/DeepDiveToDI)  |
 | [🔐 Blazor: Custom Authentication with InteractiveServer rendering (EXPLAINED)](https://youtu.be/CpJh_j88_Lw)    | [BlazorSimpleAuth](https://github.com/sa-es-ir/youtube-samples/tree/main/BlazorSimpleAuth)  |
 | [🔥 xUnit version 3 is out: they finally healed the pain!](https://youtu.be/3C_BCHWAnBU)    | [xUnitV3Features](https://github.com/sa-es-ir/youtube-samples/tree/main/xUnitV3Features)  |
 | [xUnit Essentials: Test parallelism, Collections and Fixtures!](https://youtu.be/FhHyT5R-dQk)    | [xUnitTestRunBasic](https://github.com/sa-es-ir/youtube-samples/tree/main/xUnitTestRunBasic)  |
