@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.14.36414.22 d17.14
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EFCoreCancellationToken", "EFCoreCancellationToken\EFCoreCancellationToken.csproj", "{FE3EC902-EDA6-4CF1-9D91-4FF34B32A87C}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{FE3EC902-EDA6-4CF1-9D91-4FF34B32A87C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FE3EC902-EDA6-4CF1-9D91-4FF34B32A87C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FE3EC902-EDA6-4CF1-9D91-4FF34B32A87C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FE3EC902-EDA6-4CF1-9D91-4FF34B32A87C}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {7153B9C7-18B6-4CC0-B2DA-93454B8B5043}
+	EndGlobalSection
+EndGlobal
