@@ -11,6 +11,8 @@ public class UserService(IUserRepository userRepository) : IUserService
 {
     public async Task<List<User>> GetListAsync(CancellationToken cancellationToken)
     {
+        var tokenSource = CancellationTokenSource.CreateLinkedTokenSource(cancellationToken);
+        tokenSource.CancelAfter(TimeSpan.FromSeconds(10));
         return await userRepository.GetListByQueryAsync(cancellationToken);
     }
 }
