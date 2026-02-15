@@ -8,6 +8,7 @@ This repository contains the source code I use in the YouTube video and will be 
 
 | Video Title | Code  |
 |----------|----------|
+| [EFCore CancellationToken: does it cancel the database query?](https://youtu.be/XO17isY2uOA)    | [EFCoreCancellationToken](https://github.com/sa-es-ir/youtube-samples/tree/main/EFCoreCancellationToken)  |
 | [Deep Dive on .NET Dependency Injection (EXPLAINED)](https://youtu.be/AecV8YtlEe0)    | [DeepDiveToDI](https://github.com/sa-es-ir/youtube-samples/tree/main/DeepDiveToDI)  |
 | [🔐 Blazor: Custom Authentication with InteractiveServer rendering (EXPLAINED)](https://youtu.be/CpJh_j88_Lw)    | [BlazorSimpleAuth](https://github.com/sa-es-ir/youtube-samples/tree/main/BlazorSimpleAuth)  |
 | [🔥 xUnit version 3 is out: they finally healed the pain!](https://youtu.be/3C_BCHWAnBU)    | [xUnitV3Features](https://github.com/sa-es-ir/youtube-samples/tree/main/xUnitV3Features)  |
